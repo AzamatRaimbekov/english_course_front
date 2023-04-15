@@ -1,0 +1,39 @@
+.container {
+  padding: 25px 300px;
+  min-height: 96px;
+  width: 100%;
+  background-color: var(--BLUE100);
+  box-shadow: var(--SHADOW);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.select {
+  //   width: 250px;
+  //   height: 45px;
+  margin-right: 25px;
+}
+
+.mainTitle {
+  margin-right: 20px;
+  white-space: nowrap;
+  color: var(--TEXT400);
+}
+
+.wrapper {
+  margin-right: 20px;
+  display: flex;
+  // flex-direction: column;
+}
+.titleWrapper {
+  white-space: nowrap;
+  color: var(--BLUE);
+  font-weight: 700;
+}
+
+.titleWrapperText {
+  display: flex;
+  flex-direction: column;
+  margin-right: 10px;
+}

@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "incremental": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "include": [
+    "next-env.d.ts",
+    ".next/types/**/*.ts",
+    "**/*.ts",
+    "**/*.tsx"
+, "pages/levels/[id]/index.page.jsx", "pages/_document.page.jsx", "components/Register/index.jsx", "components/ModalWindow/index.jsx", "components/UI/SelectDropDown/index.jsx", "pages/auth-page/index.page.jsx", "pages/first-exam/index.page.jsx"  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

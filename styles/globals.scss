@@ -1,0 +1,89 @@
+@import "./assets/fonts/MuseoSans/stylesheet";
+
+$WHITE: #ffffff;
+$BLACK: #13161b;
+$BLUE: #0f4f8d;
+$BLUE_HOVER: #0b3a69;
+
+$BLUE10: #f9f9fb;
+$BLUE25: #f1f2f5;
+$BLUE30: #f3f4f6;
+$BLUE150: #bcc4d0;
+$BLUE200: #97a3b7;
+$BLUE300: #7787a2;
+$BLUE400: #5f7292;
+$BLUE500: #4b5b76;
+$BLUE700: #2c3645;
+$BLUE900: #1c222b;
+$SHADOW: 0px 0px 40px rgba(75, 91, 118, 0.1);
+
+$TEXT10: #f9f9fb;
+$TEXT50: #ebedf1;
+$TEXT400: #4c5c75;
+$TEXT600: #3c485c;
+$RED: #c9353f;
+$GREEN: #00a870;
+$YELLOW: #ffdd2d;
+$YELLOW_HOVER: #dfc125;
+$BLUE_GRADIENT: radial-gradient(
+    74.78% 74.78% at 68.12% 25.22%,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 0) 100%
+  )
+  linear-gradient(111.95deg, #3793ff 28.73%, #0017e4 100%);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  --WHITE: #{$WHITE};
+  --BLUE10: #{$BLUE10};
+  --BLUE: #{$BLUE};
+  --BLUE_HOVER: #{$BLUE_HOVER};
+  --BLUE25: #{$BLUE25};
+  --BLUE30: #{$BLUE30};
+  --BLUE150: #{$BLUE150};
+  --BLUE200: #{$BLUE200};
+  --BLUE300: #{$BLUE300};
+  --BLUE400: #{$BLUE400};
+  --BLUE500: #{$BLUE500};
+  --BLUE700: #{$BLUE700};
+  --BLUE900: #{$BLUE900};
+  --TEXT10: #{$TEXT10};
+  --TEXT50: #{$TEXT50};
+  --TEXT400: #{$TEXT400};
+  --TEXT600: #{$TEXT600};
+  --RED: #{$RED};
+  --GREEN: #{$GREEN};
+  --YELLOW: #{$YELLOW};
+  --YELLOW_HOVER: #{$YELLOW_HOVER};
+  --SHADOW: #{$SHADOW};
+  font-family: "Museo Sans Cyrl 300", sans-serif;
+}
+select,
+input,
+button {
+  font-family: "Museo Sans Cyrl 300", sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 16px;
+  position: relative;
+  @media (max-width: 1200px) {
+    max-width: 960px;
+  }
+  @media (max-width: 960px) {
+    max-width: 640px;
+  }
+  @media (max-width: 640px) {
+    max-width: 100%;
+  }
+}
+
+.main-title {
+  margin: 30px;
+  color: var(--BLUE);
+}

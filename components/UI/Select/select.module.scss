@@ -1,0 +1,57 @@
+.container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: "";
+    height: 50px;
+    width: 100%;
+    padding: 0 16px;
+    background-color: $BLUE;
+    border-radius: 16px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    &:focus {
+      outline: none !important;
+      border: 1px inset #5f2eea;
+    }
+    option {
+      padding: 10px 15px;
+    }
+    &.error {
+    }
+  }
+
+  .icon {
+    position: absolute;
+    right: 21px;
+    top: 17px;
+  }
+
+  .disable {
+    color: $BLUE;
+  }
+  &.isError {
+    select {
+      background-color: #fff3f8 !important;
+      outline: none !important;
+      border: 1px inset $RED !important;
+      color: #6d7885 !important;
+      &:focus {
+        outline: none !important;
+        border: 1px inset $RED;
+      }
+    }
+  }
+}
+
+.error {
+  color: $RED;
+  font-size: 14px;
+  margin-top: 10px;
+}

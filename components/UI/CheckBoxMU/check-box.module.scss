@@ -1,0 +1,18 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+}
+
+.title {
+  font-size: 18px;
+  color: var(--BLUE);
+  margin: 15px 0;
+}
+
+.errorText {
+  font-weight: 700;
+  margin-top: 10px;
+  font-size: 14px;
+  color: var(--RED);
+}
