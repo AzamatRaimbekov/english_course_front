@@ -1,0 +1,94 @@
+.textField {
+  margin-top: 20px;
+}
+
+.button {
+  width: 250px;
+  margin-top: 20px;
+  @media (max-width: 960px) {
+    width: 100%;
+  }
+}
+
+.form {
+  padding: 20px 0;
+}
+
+.error {
+  color: var(--RED);
+  margin-top: 10px;
+  font-size: 13px;
+}
+.wrapperList {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 16px;
+  padding: 14px;
+  background-color: var(--BLUE10);
+  margin-top: 15px;
+  cursor: pointer;
+  @media (max-width: 800px) {
+    flex-direction: column;
+  }
+}
+.titleCard {
+  font-weight: 700;
+  margin-bottom: 13px;
+}
+.control {
+  display: flex;
+  @media (max-width: 800px) {
+    margin-top: 20px;
+  }
+}
+
+.delete {
+  font-weight: 700;
+  color: var(--RED);
+  margin-right: 10px;
+}
+.edit {
+  color: var(--GREEN);
+  font-weight: 700;
+}
+
+.add {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  color: var(--BLUE);
+  margin: 20px 0;
+  cursor: pointer;
+}
+
+.levelAdded {
+  height: 1px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  &.active {
+    height: auto;
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.listExtraLevels {
+  margin-bottom: 10px;
+}
+.extraLevel {
+  border-radius: 16px;
+  background-color: var(--BLUE10);
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.cup {
+  margin-bottom: 15px;
+}

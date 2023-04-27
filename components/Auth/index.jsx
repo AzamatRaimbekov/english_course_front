@@ -8,12 +8,15 @@ import { fetchAuth } from "../../slices/auth";
 import { useRouter } from "next/router";
 
 const Auth = () => {
+  // Read me - 4
   const router = useRouter();
+  // Read me - 1
   const dis = useDispatch();
+  // Read me - 5
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid },
+    formState: { errors },
   } = useForm({
     mode: "onChange",
     defaultValues: {
@@ -38,31 +41,33 @@ const Auth = () => {
   return (
     <div className={s.container}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <p className={s.title}>Добро пожаловать</p>
+        <p className={s.title}>Кош келиңиз</p>
         <InputMU
           sx={{ m: 0, width: "100%" }}
-          {...register("email", { required: "Укажите почту" })}
+          {...register("email", {
+            required: "Электрондук почтаңызды киргизиңиз",
+          })}
           label="Email"
           className={s.input}
           error={errors.email}
         />
         <InputMU
           sx={{ m: 0, width: "100%" }}
-          {...register("password", { required: "Укажите пароль" })}
-          label="Пароль"
+          {...register("password", { required: "Паролду киргизиңиз" })}
+          label="Парол"
           className={s.input}
           error={errors.password}
         />
         <div className={s.buttons}>
           <Button className={s.button} type="submit" variant="outlined">
-            Войти
+            Кирүү
           </Button>
           <Button
             onClick={goToRegPage}
             className={s.button}
             variant="contained"
           >
-            Регистрация
+            Каттоо
           </Button>
         </div>
       </form>

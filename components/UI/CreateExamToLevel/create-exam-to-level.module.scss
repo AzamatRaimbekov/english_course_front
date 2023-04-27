@@ -1,0 +1,19 @@
+.form {
+  padding: 20px 0;
+}
+
+.button {
+  width: 250px;
+  margin-top: 20px;
+  @media (max-width: 960px) {
+    width: 100%;
+  }
+}
+
+.questionWrapper {
+  margin-top: 40px;
+}
+
+.input {
+  margin: 15px 0;
+}

@@ -33,6 +33,8 @@ $BLUE_GRADIENT: radial-gradient(
   linear-gradient(111.95deg, #3793ff 28.73%, #0017e4 100%);
 
 * {
+  text-decoration: none !important;
+  color: $TEXT400;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -86,4 +88,17 @@ button {
 .main-title {
   margin: 30px;
   color: var(--BLUE);
+}
+
+.mt-40 {
+  margin-top: 40px;
+  @media (max-width: 960px) {
+    margin-top: 15px;
+  }
+}
+
+h2 {
+  @media (max-width: 960px) {
+    font-size: 18px;
+  }
 }

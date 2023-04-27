@@ -21,14 +21,15 @@ export const fetchAuth = createAsyncThunk('auth/fetchUserData', async (params) =
 })
 
 // Функция, чтобы взять данные, у пользователя, который уже аудентифицирован
-export const fetchAuthMe = createAsyncThunk('auth/fetchMe', async () => {
+export const fetchAuthMe = createAsyncThunk('auth/fetchMe', async (router) => {
     const { data } = await UserApi.getMe()
+    // const router = useRouter()
     // Если пользователь не прошел квалификационный экзамен, то показываем модальное окно
     if (data?.passed_first_exam === false) {
         store.dispatch(
             openModalText({
-                text: "Пройдите квалификационный экзамен",
-                onClick: () => router.push("/first-exam"),
+                text: "Квалификациялык тест өтүңүз",
+                onClick: () => router("/first-exam"),
             })
         );
     }

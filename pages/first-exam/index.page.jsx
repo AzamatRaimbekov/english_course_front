@@ -19,13 +19,13 @@ const FirtExamModule = () => {
   const router = useRouter();
   const dis = useDispatch();
   const userData = useSelector((state) => state.auth);
-  console.log(userData, "userData");
+
   const {
     register,
     handleSubmit,
     control,
     setValue,
-    formState: { errors, isValid },
+    formState: { errors },
   } = useForm({
     mode: "onChange",
     defaultValues: {},
@@ -41,11 +41,11 @@ const FirtExamModule = () => {
     setValue("second", array);
   };
 
+  // Это функция собирает правильные и не правильные ответы
   const onSubmit = (data) => {
-    console.log(data, "data");
-
+    // Переменная в которой хранится итоговая сумма баллов
     let totalCount = 0;
-
+    // includes - метод проверят содержит ли массив нужный элемент и возвращает boolen
     if (watchFirst.includes(correctAnswers.first)) {
       totalCount = totalCount + 10;
     }
@@ -55,19 +55,20 @@ const FirtExamModule = () => {
     regLevel(totalCount);
     dis(
       openModalText({
-        text: `Поздавляем! Ваш балл ${totalCount}`,
+        text: `Куттуктайбыз! Сиздин упайыңыз ${totalCount}`,
         onClick: () => router.push("/"),
       })
     );
   };
 
   const regLevel = (points) => {
-    console.log(points);
     switch (true) {
       case points >= 10 && points < 20:
         return changeLevelApi(2);
       case points >= 20 && points < 30:
         return changeLevelApi(3);
+      default:
+        return changeLevelApi(1);
     }
   };
 
@@ -84,12 +85,12 @@ const FirtExamModule = () => {
   return (
     <section className={s.wrapper}>
       <Container>
-        <h2 className={s.title}>Первый тест</h2>
+        <h2 className={s.title}>Квалификациялык тест</h2>
 
         <form onSubmit={handleSubmit(onSubmit)}>
           <Controller
             {...register("first", {
-              required: "Танданыз",
+              required: "Жоопту тандаңыз",
             })}
             control={control}
             name="first"
@@ -103,7 +104,7 @@ const FirtExamModule = () => {
           />
           <Controller
             {...register("second", {
-              required: "Танданыз",
+              required: "Жоопту тандаңыз",
             })}
             control={control}
             name="second"
@@ -115,8 +116,13 @@ const FirtExamModule = () => {
               />
             )}
           />
-          <Button className={s.button} type="submit" variant="contained" endIcon={<SendIcon />}>
-            Жонотуу
+          <Button
+            className={s.button}
+            type="submit"
+            variant="contained"
+            endIcon={<SendIcon />}
+          >
+            Тастыктоо
           </Button>
         </form>
       </Container>

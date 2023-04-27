@@ -18,7 +18,7 @@ const Layout = ({ children }) => {
   return (
     <div>
       {!matches ? <Header /> : <HeaderMobile />}
-      <main>{children}</main>
+      <main style={{ marginBottom: "40px" }}>{children}</main>
     </div>
   );
 };

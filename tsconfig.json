@@ -28,7 +28,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "pages/levels/[id]/index.page.jsx", "pages/_document.page.jsx", "components/Register/index.jsx", "components/ModalWindow/index.jsx", "components/UI/SelectDropDown/index.jsx", "pages/auth-page/index.page.jsx", "pages/first-exam/index.page.jsx"  ],
+, "pages/_app.page.jsx", "components/UI/CreateLevels/index.jsx", "components/Ckeditor/index.jsx", "components/HtmlParser/index.jsx"  ],
   "exclude": [
     "node_modules"
   ]

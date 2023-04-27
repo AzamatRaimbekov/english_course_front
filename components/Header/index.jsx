@@ -6,6 +6,7 @@ import { Button } from "@mui/material";
 import { logout } from "../../slices/auth";
 import { UserStorage } from "../../service/storage/auth";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const Header = () => {
   const { push } = useRouter();
@@ -25,7 +26,9 @@ const Header = () => {
   return (
     <header className={s.container}>
       <div className={s.mainTitle}>
-        <h1>Английский курсу</h1>
+        <Link href="/">
+          <h1>Английский курсу</h1>
+        </Link>
       </div>
       <DropDownMenu className={s.select} title="Уровни" />
       <DropDownMenu className={s.select} title="Тесты" />
@@ -33,9 +36,7 @@ const Header = () => {
       {userData?.data && (
         <div className={s.wrapper}>
           <div className={s.titleWrapperText}>
-            <p className={s.titleWrapper}>
-              {userData?.data?.fullName} / {userData?.data?.email}
-            </p>
+            <p className={s.titleWrapper}>{userData?.data?.email}</p>
             <p className={s.titleWrapper}>Уровень - {userData?.data?.level}</p>
           </div>
           <Button onClick={logoutFromak}>Чыгуу</Button>

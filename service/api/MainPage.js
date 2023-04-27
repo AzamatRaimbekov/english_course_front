@@ -4,4 +4,7 @@ export const MainPageApi = {
     getLevelsList() {
         return serverApi.get('levels')
     },
+    getLevelDetail(params) {
+        return serverApi.get(`levels/${params.id}`)
+    },
 }

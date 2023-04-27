@@ -22,9 +22,9 @@ const MadalSlice = createSlice({
             state.body = action.payload
         },
         openModalText: (state, action) => {
-            state.body = null,
-                state.textError = action.payload.text,
-                state.onClick = action.payload.onClick
+            state.body = null
+            state.textError = action.payload.text
+            state.onClick = action.payload.onClick
         }
     },
     // extraReducers: {

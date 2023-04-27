@@ -27,12 +27,14 @@
   // flex-direction: column;
 }
 .titleWrapper {
+  font-size: 14px !important;
   white-space: nowrap;
   color: var(--BLUE);
   font-weight: 700;
 }
 
 .titleWrapperText {
+  font-size: 14px !important;
   display: flex;
   flex-direction: column;
   margin-right: 10px;

@@ -9,6 +9,8 @@ import { Container } from "@mui/material";
 SwiperCore.use([Navigation, Mousewheel]);
 
 const CarouselNavigation = ({ navigation, onClick, activeTab }) => {
+
+  console.log(activeTab, "activeTab")
   const router = useRouter();
 
   return (
@@ -28,13 +30,13 @@ const CarouselNavigation = ({ navigation, onClick, activeTab }) => {
           {navigation?.map((item, index) => (
             <SwiperSlide key={item?.id}>
               <p
-                onClick={() => onClick(item.id)}
+                onClick={() => onClick(item)}
                 className={`
                                         regular-18
                                         ${style.link} 
                                         ${
                                           String(activeTab) ===
-                                          `${String(item?.id)}`
+                                          `${String(item?._id)}`
                                             ? style.active
                                             : ""
                                         }

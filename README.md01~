@@ -1,0 +1,11 @@
+1 . STATE MENEGER - Менеджер состояни используется RTK - в файле store.js - источник документации - https://redux-toolkit.js.org/
+
+2 . Библиотека с UI компонетами   MUI   - источник документации  - https://mui.com/
+(Мы использоовали ее в папке - components => UI => Все компоненты написанные с MUI(InputMU, SelectMU, checkBoxMU) )
+
+3 . Token пользователя хранится в браузере localeStorage
+
+4. const router = useRouter();  useRouter - функция от NextJs В которая возвращает нам обект со всеми данными проекта 
+(детали страницы, локализацтя, порт, сервер, состояния и т д) источник - https://nextjs.org/docs/api-reference/next/router
+
+5.useForm - Библиотека, которая работает со всеми формами и валидацией заявок источник - https://react-hook-form.com/api/useform/

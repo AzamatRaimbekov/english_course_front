@@ -1,29 +1,48 @@
-import { Container } from "@mui/material";
-
+import { Button, Container } from "@mui/material";
+import { MainPageApi } from "../../../service/api/MainPage";
 import CarouselNavigation from "/components/Carusels/CarouselNavigations";
+import { useState } from "react";
+import HtmlParser from "../../../components/HtmlParser";
 
-// import s from "..levels.module.scss";
+import s from "./level-detail.module.scss";
 
-const navigation = [
-  {
-    title: "Не правильные глаголы",
-    id: 2,
-  },
-  {
-    title: "Правильные глаголы",
-    id: 2,
-  },
-];
-
-const LevelDetail = ({}) => {
+const LevelDetail = ({ levelData }) => {
+  const [extraLevelData, setExtraLevel] = useState(levelData?.parts[0]);
+  const getExtraLevelData = (item) => {
+    setExtraLevel(item);
+  };
+  console.log(levelData);
   return (
     <div>
       <Container>
-        <h1 className="main-title">Текущий уровень</h1>
-        <CarouselNavigation navigation={navigation} />
+        <h1 className="main-title">Учурдагы деңгээл - {levelData.title} </h1>
+        <HtmlParser desc={levelData.text} />
+        <CarouselNavigation
+          activeTab={extraLevelData?._id}
+          onClick={getExtraLevelData}
+          navigation={levelData.parts}
+        />
+        <HtmlParser desc={extraLevelData?.textExtra} />
+        <div className={s.button}>
+          <Button variant="contained" color="success">
+            Тест тапшыра баштаңыз
+          </Button>
+        </div>
       </Container>
     </div>
   );
 };
-
 export default LevelDetail;
+
+// В Next js GET запросы, должны проводиться через getServerSideProps, который описан в документации Next js
+// Документация по NEXT JS - https://nextjs.org/docs/basic-features/data-fetching/get-server-side-props
+// Это функция нужно для SSR  - SERVER SIDE RENDERING. То есть отрисовка происходит на сервере, а не на клиентской стороне
+
+// context - Это то что принимает аргументом  getServerSideProps и возвращает парамаенты текущей страницы такие как ( QUERY, PATHNAME, LOCALE И Т Д)
+export async function getServerSideProps(context) {
+  // Айди мы взяли с адресной страницы под ключем id
+  const id = context.query.id;
+  const { data } = await MainPageApi.getLevelDetail({ id: id });
+  // Тут мы прокинули дату через пропсы и будем принимать сверху
+  return { props: { levelData: data } };
+}

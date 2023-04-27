@@ -16,21 +16,21 @@ const Register = () => {
   } = useForm({
     mode: "onChange",
     defaultValues: {
-      // email: "azamat@bk.ru",
-      // password: "Azamat12345",
     },
   });
 
   const onSubmit = (data) => {
     try {
       dis(fetchReg(data));
-    } catch (e) {}
+    } catch (e) {
+      alert(e);
+    }
   };
 
   return (
     <div className={s.container}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <p className={s.title}>Регистрация</p>
+        <p className={s.title}>Каттоо</p>
         <InputMU
           sx={{ m: 0, width: "100%" }}
           {...register("fullName", { required: "ФИО" })}
@@ -40,15 +40,17 @@ const Register = () => {
         />
         <InputMU
           sx={{ m: 0, width: "100%" }}
-          {...register("email", { required: "Укажите почту" })}
+          {...register("email", {
+            required: "Электрондук почтаңызды киргизиңиз",
+          })}
           label="Email"
           className={s.input}
           error={errors.email}
         />
         <InputMU
           sx={{ m: 0, width: "100%" }}
-          {...register("password", { required: "Пароль" })}
-          label="password"
+          {...register("password", { required: "Парол" })}
+          label="Парол"
           className={s.input}
           error={errors.password}
         />
@@ -58,7 +60,7 @@ const Register = () => {
           type="submit"
           variant="outlined"
         >
-          Подвердить
+          Тастыктоо
         </Button>
       </form>
     </div>
