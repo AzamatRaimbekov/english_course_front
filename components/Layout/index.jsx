@@ -31,7 +31,7 @@ const Layout = ({ children }) => {
   const levelListFillter = levelList?.map((item) => ({
     id: item._id,
     title: item.title,
-    status: item.currentLevel > userData.level,
+    status: item.currentLevel > userData?.level,
   }));
 
   return (
