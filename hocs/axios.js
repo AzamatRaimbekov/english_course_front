@@ -3,10 +3,10 @@ import { UserStorage, getFromStorage } from '../service/storage/auth'
 import { openModalText } from '../slices/modalWindow'
 import { store } from "../store";
 const clientApi = axios.create({
-    baseURL: 'http://localhost:4444/',
+    baseURL: 'https://english-course-back.onrender.com/',
 })
 const serverApi = axios.create({
-    baseURL: 'http://localhost:4444/',
+    baseURL: 'https://english-course-back.onrender.com/',
 })
 
 function setResponseInterceptors() {
