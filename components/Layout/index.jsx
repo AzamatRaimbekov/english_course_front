@@ -23,9 +23,6 @@ const Layout = ({ children }) => {
 
   useEffect(() => {
     getLevelList();
-    if (!token.data) {
-      router.push("/auth-page");
-    }
   }, []);
 
   const levelListFillter = levelList?.map((item) => ({

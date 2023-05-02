@@ -26,11 +26,7 @@ function App({ Component, pageProps, emotionCache = clientSideEmotionCache }) {
 
   useEffect(() => {
     // Если USER не авторизовано, то направляем на страницу аудентификации
-    const token = UserStorage.getUserToken();
-    if (!token) {
-      router.push("/auth-page");
-    } else {
-    }
+    
   }, []);
 
   useEffect(() => {
