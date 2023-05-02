@@ -5,13 +5,38 @@ import { useState } from "react";
 import HtmlParser from "../../../components/HtmlParser";
 
 import s from "./level-detail.module.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { openModal } from "../../../slices/modalWindow";
+import PassExam from "../../../components/UI/PassExam";
 
 const LevelDetail = ({ levelData }) => {
+  
   const [extraLevelData, setExtraLevel] = useState(levelData?.parts[0]);
+  const dis = useDispatch();
+  const { data } = useSelector((state) => state.auth);
   const getExtraLevelData = (item) => {
     setExtraLevel(item);
   };
-  console.log(levelData);
+
+  const startToPassExam = () => {
+    if (!levelData.examTest.length) return null;
+    dis(
+      openModal({
+        body: (
+          <PassExam
+            data={levelData.examTest}
+            levelData={{
+              title: levelData.title,
+              currentLevelUser: data?.level,
+              level: levelData?.currentLevel,
+              userId: data?._id,
+            }}
+          />
+        ),
+      })
+    );
+  };
+
   return (
     <div>
       <Container>
@@ -24,9 +49,15 @@ const LevelDetail = ({ levelData }) => {
         />
         <HtmlParser desc={extraLevelData?.textExtra} />
         <div className={s.button}>
-          <Button variant="contained" color="success">
-            Тест тапшыра баштаңыз
-          </Button>
+          {levelData.examTest.length && (
+            <Button
+              onClick={startToPassExam}
+              variant="contained"
+              color="success"
+            >
+              Тест тапшыра баштаңыз
+            </Button>
+          )}
         </div>
       </Container>
     </div>

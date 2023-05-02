@@ -1,8 +1,9 @@
 import { useState } from "react";
 import clsx from "clsx";
+import BlockIcon from "@mui/icons-material/Block";
 import s from "./dropdown.module.scss";
 
-const DropDownMenu = ({ title, className = "" }) => {
+const DropDownMenu = ({ title, className = "", list, onClick }) => {
   const [show, setShow] = useState(false);
   return (
     <div
@@ -13,9 +14,15 @@ const DropDownMenu = ({ title, className = "" }) => {
     >
       <p>{title}</p>
       <div className={clsx(s.menu, show && s.active)}>
-        <p>Первый уровень</p>
-        <p>Воторой уровень</p>
-        <p>Третий уровень</p>
+        {list?.map((item) => (
+          <div
+            onClick={() => !item.status && onClick(item.id)}
+            className={s.wrapper}
+          >
+            {item.status && <BlockIcon />}
+            <p className={clsx(item.status && s.blocked)}>{item.title}</p>
+          </div>
+        ))}
       </div>
     </div>
   );

@@ -14,6 +14,8 @@
 }
 
 .menu {
+  max-height: 300px;
+  overflow-y: scroll;
   opacity: 0;
   transition: all 0.5s ease;
   background-color: var(--WHITE);
@@ -29,15 +31,51 @@
     visibility: visible;
     opacity: 1;
   }
+
+  &::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 16px;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: var(--BLUE10);
+    border-radius: 16px;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: var(--BLUE);
+    border-radius: 16px;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(--GRAY);
+    border-radius: 16px;
+  }
+}
+
+.blocked {
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.wrapper {
+  transition: all 0.3s ease;
+  border-radius: 2px;
+  padding: 10px 17px;
+  cursor: pointer;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
   p {
-    transition: all 0.3s ease;
-    border-radius: 2px;
-    padding: 10px 17px;
-    cursor: pointer;
-    white-space: nowrap;
-    &:hover {
-      background-color: var(--BLUE);
+    margin-left: 10px;
+  }
+  &:hover {
+    p {
       color: var(--WHITE);
     }
+    background-color: var(--BLUE);
   }
 }

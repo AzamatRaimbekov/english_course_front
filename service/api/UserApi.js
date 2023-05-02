@@ -19,4 +19,7 @@ export const UserApi = {
     changeLevel(data) {
         return serverApi.patch('change-level', data)
     },
+    getAllUsers() {
+        return serverApi.get('all_users')
+    },
 }

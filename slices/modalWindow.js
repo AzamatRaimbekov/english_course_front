@@ -9,6 +9,7 @@ const initialState = {
 }
 
 
+
 const MadalSlice = createSlice({
     name: "auth",
     initialState,
@@ -19,7 +20,9 @@ const MadalSlice = createSlice({
             state.onClick = null
         },
         openModal: (state, action) => {
-            state.body = action.payload
+            state.body = action.payload.body
+            state.textError = ""
+            state.onClick = action.payload.func || null
         },
         openModalText: (state, action) => {
             state.body = null

@@ -14,7 +14,7 @@ export const fetchAuth = createAsyncThunk('auth/fetchUserData', async (params) =
         UserStorage.setUserToken(data?.token)
         return data
     } catch (e) {
-        store.dispatch(openModalText(e?.response?.data?.message))
+        store.dispatch(openModalText({ text: e?.response?.data?.message }))
         return e
     }
 
@@ -45,7 +45,7 @@ export const fetchReg = createAsyncThunk('auth/fetchReg', async (params) => {
         window.location = "/"
         return data
     } catch (e) {
-        store.dispatch(openModalText(e?.response?.data?.message))
+        store.dispatch(openModalText({ text: e?.response?.data?.message }))
 
         return e
     }

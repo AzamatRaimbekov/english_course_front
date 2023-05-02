@@ -5,6 +5,9 @@ export const LevelsApi = {
     createNewLevel(data) {
         return serverApi.post('levels', data)
     },
+    createExamToLevel(id, data) {
+        return serverApi.patch(`levels_exam/${id}`, data)
+    },
 }
 
 

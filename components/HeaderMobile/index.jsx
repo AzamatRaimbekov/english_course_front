@@ -8,8 +8,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../slices/auth";
 import { UserStorage } from "../../service/storage/auth";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
-const HeaderMobile = () => {
+const HeaderMobile = ({ levelList }) => {
   const { push } = useRouter();
   const [show, setShow] = useState(false);
   const userData = useSelector((state) => state.auth);
@@ -25,10 +26,18 @@ const HeaderMobile = () => {
     setShow(false);
     push("/auth-page");
   };
+
+  const goToLevelPage = (pathId) => {
+    push(`/levels/${pathId}`);
+  };
+
   return (
     <div className={s.wrapper}>
       <div className={s.mainTitle}>
-        <h3>Английский курсу</h3>
+        <Link href="/">
+          <h3>Английский курсу</h3>
+        </Link>
+
         <div onClick={() => setShow(!show)}>
           <MenuIcon />
         </div>
@@ -37,8 +46,12 @@ const HeaderMobile = () => {
         <div>
           <div className={s.overlay}></div>
           <header className={s.header}>
-            <SelectDropDownDefault title="Уровни" />
-            <SelectDropDownDefault title="Тесты" />
+            <SelectDropDownDefault
+              onClick={goToLevelPage}
+              title="Деңгээлдер"
+              data={levelList}
+            />
+
             {userData?.data && (
               <div className={s.wrapper - 2}>
                 <div className={s.titleWrapperText}>
@@ -46,7 +59,7 @@ const HeaderMobile = () => {
                     {userData?.data?.fullName} / {userData?.data?.email}
                   </p>
                   <p className={s.titleWrapper}>
-                    Уровень - {userData?.data?.level}
+                  Деңгээл - {userData?.data?.level}
                   </p>
                 </div>
                 <Button onClick={logoutFromak}>Чыгуу</Button>

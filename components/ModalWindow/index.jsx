@@ -3,6 +3,7 @@ import s from "./modal-window.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { clearModal } from "../../slices/modalWindow";
 import { Button } from "@mui/material";
+
 const ModalWindow = ({ children }) => {
   const modalData = useSelector((state) => state.madalSlice);
   const dis = useDispatch();
@@ -29,6 +30,9 @@ const ModalWindow = ({ children }) => {
             </Button>
           )}
         </div>
+      )}
+      {modalData?.body && (
+        <div className={s.contentBlock}> {modalData?.body} </div>
       )}
     </div>
   );

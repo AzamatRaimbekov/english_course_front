@@ -23,8 +23,8 @@
   background-color: var(--WHITE);
   position: absolute;
   z-index: 2001;
-  width: 300px;
-  height: 300px;
+  min-width: 300px;
+  min-height: 300px;
   border-radius: 14px;
   box-shadow: var(--SHADOW);
 }
@@ -36,17 +36,13 @@
   background-color: var(--WHITE);
   position: absolute;
   z-index: 2001;
-  width: 300px;
-  height: 300px;
+  min-width: 300px;
+  min-height: 300px;
   border-radius: 14px;
   box-shadow: var(--SHADOW);
   display: flex;
   justify-content: center;
   align-items: center;
-  @media (max-width: 960px) {
-    width: 300px;
-    height: 300px;
-  }
 }
 
 .title {

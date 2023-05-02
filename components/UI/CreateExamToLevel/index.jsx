@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import SelectMU from "../../UI/SelectMU";
 
 import s from "./create-exam-to-level.module.scss";
@@ -8,11 +8,12 @@ import { Button } from "@mui/material";
 import InputMU from "../InputMU";
 import CheckBoxMU from "../CheckBoxMU";
 import InputRadioMU from "../InputRadioMU";
+import clsx from "clsx";
+import { createExamToLevel } from "../../../slices/levels";
+import { openModal, openModalText } from "../../../slices/modalWindow";
 
 const CreateExamToLevel = ({ levelList }) => {
-  console.log(levelList, "levelList");
-
-  const [QArray, setQArray] = useState();
+  const [QArray, setQArray] = useState([]);
 
   const levelOption = levelList.map((item) => ({
     name: item.title,
@@ -35,55 +36,75 @@ const CreateExamToLevel = ({ levelList }) => {
   });
 
   const onSubmit = (data) => {
-    console.log(data, "data");
-    // reset();
+    try {
+      const currentData = {
+        examTest: QArray,
+      };
+      dis(createExamToLevel({ id: data.levelId, data: currentData }));
+      
+    } catch (e) {}
+    reset();
+    setQArray([]);
   };
 
   const onChangeTrueFalse = (nameValue, value) => {
     setValue(nameValue, value);
   };
-
   const addQuestionToArray = () => {
     const currentDataState = getValues();
-
-    const radios = questionsArray.map((item) => ({
-      question: currentDataState[item.name],
+    const radios = questionsArray.answers_array.map((item) => ({
       answer: currentDataState[item.answerName],
       trueAnswer: currentDataState[item.trueAnswerName] === 1 ? true : false,
     }));
-    console.log(radios, "radios");
+    const questionItem = {
+      question: currentDataState.name_of_question,
+      radios: radios,
+    };
+    setQArray((prev) => [...prev, questionItem]);
+    questionsArray.answers_array.forEach((item) => {
+      setValue(item.answerName, "");
+      setValue("name_of_question", "");
+      setValue(item.trueAnswerName, "");
+    });
   };
 
-  const questionsArray = [
-    {
-      name: "firts",
-      title: "Биринчи суроо",
-      error: errors.firts,
-      trueAnswerName: "firts_answerState",
-      answerName: "firts_answerName",
-    },
-    {
-      name: "second",
-      title: "Экинчи суроо",
-      error: errors.second,
-      trueAnswerName: "second_answerState",
-      answerName: "second_answerName",
-    },
-    {
-      name: "third",
-      title: "Үчүнчү суроо",
-      error: errors.third,
-      trueAnswerName: "third_answerState",
-      answerName: "third_answerName",
-    },
-    {
-      name: "fourth",
-      title: "Төртүнчү суроо",
-      error: errors.fourth,
-      trueAnswerName: "fourth_answerState",
-      answerName: "fourth_answerName",
-    },
-  ];
+  const questionsArray = {
+    name_of_question: "name_of_question",
+    title: "Биринчи суроо",
+    error: errors.firts,
+    trueAnswerName: "firts_answerState",
+    answerName: "firts_answerName",
+    answers_array: [
+      {
+        name: "firts",
+        title: "Биринчи суроо",
+        error: errors.firts,
+        trueAnswerName: "firts_answerState",
+        answerName: "firts_answerName",
+      },
+      {
+        name: "second",
+        title: "Экинчи суроо",
+        error: errors.second,
+        trueAnswerName: "second_answerState",
+        answerName: "second_answerName",
+      },
+      {
+        name: "third",
+        title: "Үчүнчү суроо",
+        error: errors.third,
+        trueAnswerName: "third_answerState",
+        answerName: "third_answerName",
+      },
+      {
+        name: "fourth",
+        title: "Төртүнчү суроо",
+        error: errors.fourth,
+        trueAnswerName: "fourth_answerState",
+        answerName: "fourth_answerName",
+      },
+    ],
+  };
 
   const checkBoxList = [
     {
@@ -109,17 +130,16 @@ const CreateExamToLevel = ({ levelList }) => {
 
         <div className={s.questionWrapper}>
           <h3>Суроолорду түзүү</h3>
-          {questionsArray.map((item) => (
+          <InputMU
+            variant="outlined"
+            sx={{ m: 0, width: "100%" }}
+            {...register("name_of_question", { required: `Суроо ` })}
+            label={`Суроо`}
+            className={s.input}
+            error={errors.name_of_question}
+          />
+          {questionsArray?.answers_array.map((item) => (
             <div>
-              <InputMU
-                variant="outlined"
-                key={item.name}
-                sx={{ m: 0, width: "100%" }}
-                {...register(item.name, { required: `Суроо - ${item.title}` })}
-                label={`Суроо - ${item.title}`}
-                className={s.input}
-                error={item.error}
-              />
               <InputMU
                 variant="outlined"
                 key={item.name}
@@ -153,16 +173,44 @@ const CreateExamToLevel = ({ levelList }) => {
           ))}
           <Button
             color="success"
-            type="submimt"
             className={s.button}
             variant="contained"
-            onClick={addQuestionToArray}
+            onClick={() => addQuestionToArray()}
           >
             Суроо кошуу
           </Button>
         </div>
 
-        <Button type="submimt" className={s.button} variant="outlined">
+        {/* Созданные вопросы */}
+        <div className={s.questionWrapper}>
+          <h3>Түзүлгөн суроолор</h3>
+          {QArray?.radios?.map((item, index) => {
+            const questionArrayBlock = item.map((qest, index2) => (
+              <div className={s.questionItem}>
+                <p className={s.question_title}>
+                  #{index2 + 1} - суроо : {qest.question}
+                </p>
+                <p className={s.question_title}>Жооп - {qest.answer}</p>
+                <div className={s.question_answer}>
+                  {qest.trueAnswer === 1 ? (
+                    <p className={s.question_answer}>"Туура"</p>
+                  ) : (
+                    <p className={s.question_answer_no}>"Туура эмес"</p>
+                  )}
+                </div>
+              </div>
+            ));
+
+            return (
+              <div>
+                <h4 className={s.title_text}>№{index + 1} - суроо</h4>
+                {questionArrayBlock}
+              </div>
+            );
+          })}
+        </div>
+
+        <Button type="submit" className={s.button} variant="outlined">
           Кошуу
         </Button>
       </form>

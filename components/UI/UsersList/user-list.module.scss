@@ -1,0 +1,44 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.card {
+  border-radius: 14px;
+  box-shadow: var(--SHADOW);
+  margin-bottom: 12px;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.name {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.yes {
+  color: var(--GREEN);
+  font-weight: 800;
+}
+.no {
+  color: var(--RED);
+  font-weight: 800;
+}
+.control {
+  display: flex;
+  @media (max-width: 800px) {
+    margin-top: 20px;
+  }
+}
+
+.delete {
+  font-weight: 700;
+  color: var(--RED);
+  margin-right: 10px;
+}
+.edit {
+  color: var(--GREEN);
+  font-weight: 700;
+}

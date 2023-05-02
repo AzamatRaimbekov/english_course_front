@@ -10,7 +10,6 @@ SwiperCore.use([Navigation, Mousewheel]);
 
 const CarouselNavigation = ({ navigation, onClick, activeTab }) => {
 
-  console.log(activeTab, "activeTab")
   const router = useRouter();
 
   return (

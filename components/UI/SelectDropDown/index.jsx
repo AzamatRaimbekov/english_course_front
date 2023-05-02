@@ -6,13 +6,13 @@ import s from "./select-drop-down-default.module.scss";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 
-const SelectDropDownDefault = ({ data, title }) => {
+const SelectDropDownDefault = ({ data, title, onClick }) => {
   const [isShow, setIsShow] = useState(false);
   const router = useRouter();
   const toggle = () => {
     setIsShow(!isShow);
   };
-  const IconUpDown = !isShow ? (
+  const IconUpDown = isShow ? (
     <KeyboardArrowUpIcon className={s.icon} />
   ) : (
     <KeyboardArrowDownIcon className={s.icon} />
@@ -26,11 +26,17 @@ const SelectDropDownDefault = ({ data, title }) => {
       </div>
       <ol className={clsx(s.ol, isShow && s.active)}>
         {data?.map((link) => (
-          <Link key={link.id} href={linkPath(link.page_path, router)}>
-            <a href="" className={s.bottomLink}>
-              <li className={clsx(s.liTitle, "light-14")}>{link.title}</li>
-            </a>
-          </Link>
+          <p
+            onClick={() => !item.status && onClick(link?.id)}
+            className={s.bottomLink}
+          >
+            <li
+              className={clsx(s.liTitle, "light-14", link?.status && s.blocked)}
+            >
+              
+              {link.title}
+            </li>
+          </p>
         ))}
       </ol>
     </div>

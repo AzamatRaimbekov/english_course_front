@@ -1,9 +1,14 @@
 .container {
-  padding: 25px 300px;
+  padding: 25px 0;
   min-height: 96px;
   width: 100%;
   background-color: var(--BLUE100);
   box-shadow: var(--SHADOW);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.header {
   display: flex;
   align-items: center;
   justify-content: space-around;

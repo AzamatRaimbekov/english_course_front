@@ -1,18 +1,23 @@
 import { Container } from "@mui/material";
 import React, { useState } from "react";
-import s from "./crm.module.scss";
 import CreateLevels from "../../components/UI/CreateLevels";
 import clsx from "clsx";
 import { MainPageApi } from "../../service/api/MainPage";
 import CreateExamToLevel from "../../components/UI/CreateExamToLevel";
+import { UserApi } from "../../service/api/UserApi";
+import UserList from "../../components/UI/UsersList";
 
-const CRM = ({ levelList }) => {
+import s from "./crm.module.scss";
+
+const CRM = ({ levelList, userList }) => {
+
   const CRM_TABS = [
     { id: "Деңгээлдер", body: <CreateLevels levelList={levelList} /> },
     { id: "Тесттер", body: <CreateExamToLevel levelList={levelList} /> },
-    { id: "Колдонуучулар", body: <div>33</div> },
+    { id: "Колдонуучулар", body: <UserList userList={userList} /> },
   ];
   const [tabActive, setTabActive] = useState(CRM_TABS[0].id);
+
   return (
     <Container>
       <div className={s.tabWrapper}>
@@ -48,6 +53,7 @@ export default CRM;
 // Это функция нужно для SSR  - SERVER SIDE RENDERING. То есть отрисовка происходит на сервере, а не на клиентской стороне
 export async function getServerSideProps() {
   const { data } = await MainPageApi.getLevelsList();
+  const { data: userList } = await UserApi.getAllUsers();
   // Тут мы прокинули дату через пропсы и будем принимать сверху
-  return { props: { levelList: data } };
+  return { props: { levelList: data, userList } };
 }

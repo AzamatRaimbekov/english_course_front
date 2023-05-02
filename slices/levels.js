@@ -7,6 +7,18 @@ import { openModalText } from "./modalWindow"
 export const createLevel = createAsyncThunk('auth/postLevel', async (params) => {
     const { data } = await LevelsApi.createNewLevel(params)
 })
+export const createExamToLevel = createAsyncThunk('auth/createExamToLevel', async (params) => {
+
+    try {
+        const { data } = await LevelsApi.createExamToLevel(params.id, params.data)
+        store.dispatch(openModalText({ text: "Cиз деңгээл коштуңуз" }));
+        return data
+
+    } catch (e) {
+        store.dispatch(openModalText({ text: e?.response?.data?.message }))
+        return e
+    }
+})
 
 const initialState = {
     levels: {
