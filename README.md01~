@@ -9,3 +9,5 @@
 (детали страницы, локализацтя, порт, сервер, состояния и т д) источник - https://nextjs.org/docs/api-reference/next/router
 
 5.useForm - Библиотека, которая работает со всеми формами и валидацией заявок источник - https://react-hook-form.com/api/useform/
+
+6. React hooks  - useState - https://legacy.reactjs.org/docs/hooks-state.html

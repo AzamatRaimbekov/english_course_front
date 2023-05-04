@@ -1,23 +1,25 @@
-import React from "react";
-import s from "./modal-window.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { clearModal } from "../../slices/modalWindow";
 import { Button } from "@mui/material";
 
+import s from "./modal-window.module.scss";
+
 const ModalWindow = ({ children }) => {
+  // rm - 4
   const modalData = useSelector((state) => state.madalSlice);
   const dis = useDispatch();
-
-  if (!modalData?.body && !modalData?.textError) {
-    return null;
-  }
 
   const buttonFunc = () => {
     dis(clearModal());
     modalData.onClick();
   };
+  // Если в стейте редакса в ключе body ничего нет, то мы скрываем попапку
+  if (!modalData?.body && !modalData?.textError) {
+    return null;
+  }
 
   return (
+    // Модальное окно
     <div className={s.container}>
       <div onClick={() => dis(clearModal())} className={s.overlay}></div>
       <div className={s.content}>{children}</div>

@@ -1,9 +1,8 @@
 import * as React from "react";
 import { store } from "../store";
-import { Provider, useDispatch, useSelector } from "react-redux";
+import { Provider } from "react-redux";
 import Layout from "../components/Layout";
 import ModalWindow from "../components/ModalWindow";
-import { UserStorage } from "../service/storage/auth";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { fetchAuthMe } from "../slices/auth";
@@ -16,6 +15,8 @@ import { ThemeProvider } from "@mui/material";
 import { CacheProvider } from "@emotion/react";
 import createEmotionCache from "../helpers/createEmotioncahce";
 
+// ! Этот файл является корневым. Тут содердиться все приложение и его структура
+
 // Дальнейший код сделан по статье работы Next js и MUI вместе
 // источник к статье - https://blog.logrocket.com/getting-started-with-mui-and-next-js/
 const clientSideEmotionCache = createEmotionCache();
@@ -26,7 +27,6 @@ function App({ Component, pageProps, emotionCache = clientSideEmotionCache }) {
 
   useEffect(() => {
     // Если USER не авторизовано, то направляем на страницу аудентификации
-    
   }, []);
 
   useEffect(() => {

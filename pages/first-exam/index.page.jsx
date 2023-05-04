@@ -60,8 +60,9 @@ const FirtExamModule = () => {
       })
     );
   };
-
+  // Функция, которая в зависимости от количеста баллов меняет твой уровень
   const regLevel = (points) => {
+    // Функция сделала через свич кейс - https://www.w3schools.com/js/js_switch.asp
     switch (true) {
       case points >= 10 && points < 20:
         return changeLevelApi(2);
@@ -71,7 +72,7 @@ const FirtExamModule = () => {
         return changeLevelApi(1);
     }
   };
-
+  // функция потравляет результат
   const changeLevelApi = async (level) => {
     try {
       const levelData = {

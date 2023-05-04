@@ -11,6 +11,7 @@ import s from "./crm.module.scss";
 
 const CRM = ({ levelList, userList }) => {
 
+  // Массив содержащий блоки для табуляции
   const CRM_TABS = [
     { id: "Деңгээлдер", body: <CreateLevels levelList={levelList} /> },
     { id: "Тесттер", body: <CreateExamToLevel levelList={levelList} /> },

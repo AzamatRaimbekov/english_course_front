@@ -1,7 +1,9 @@
 import axios from 'axios'
-import { UserStorage, getFromStorage } from '../service/storage/auth'
+import { getFromStorage } from '../service/storage/auth'
 import { openModalText } from '../slices/modalWindow'
 import { store } from "../store";
+
+
 const clientApi = axios.create({
     baseURL: 'https://english-course-back.onrender.com/',
 })
@@ -51,3 +53,5 @@ function setResponseInterceptors() {
 setResponseInterceptors()
 
 export { clientApi, serverApi }
+
+// Гланая функция через которую проходит axios

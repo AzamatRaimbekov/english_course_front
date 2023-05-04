@@ -46,7 +46,6 @@ export const fetchReg = createAsyncThunk('auth/fetchReg', async (params) => {
         return data
     } catch (e) {
         store.dispatch(openModalText({ text: e?.response?.data?.message }))
-
         return e
     }
 

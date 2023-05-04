@@ -63,10 +63,17 @@ const CreateLevels = ({ levelList }) => {
     setValue("textExtra", "");
     setExtraText("");
   };
+
+  const deleteLevel = () => {
+    
+  }
   
   useEffect(() => {
     setEditorLoaded(true);
   }, []);
+
+
+  
   
 
   return (

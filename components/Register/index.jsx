@@ -2,11 +2,13 @@ import { useRouter } from "next/router";
 import InputMU from "../UI/InputMU";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
-import s from "./reg.module.scss";
 import { Button } from "@mui/material";
-import { fetchAuth, fetchReg } from "../../slices/auth";
+import { fetchReg } from "../../slices/auth";
+
+import s from "./reg.module.scss";
 
 const Register = () => {
+  // readme -4, 1, 5
   const router = useRouter();
   const dis = useDispatch();
   const {
@@ -15,16 +17,12 @@ const Register = () => {
     formState: { errors, isValid },
   } = useForm({
     mode: "onChange",
-    defaultValues: {
-    },
+    defaultValues: {},
   });
 
+  // Функция онСабмит для form
   const onSubmit = (data) => {
-    try {
-      dis(fetchReg(data));
-    } catch (e) {
-      alert(e);
-    }
+    dis(fetchReg(data));
   };
 
   return (

@@ -30,7 +30,7 @@ const Layout = ({ children }) => {
     title: item.title,
     status: item.currentLevel > userData?.level,
   }));
-
+  // matches - Это возвращает нам true или False в зависимсти от размера экрана
   return (
     <div>
       {!matches ? (
@@ -38,6 +38,7 @@ const Layout = ({ children }) => {
       ) : (
         <HeaderMobile levelList={levelListFillter} />
       )}
+      {/* children - Это все компоненты которое обернуты в компонент Layout  */}
       <main style={{ marginBottom: "40px" }}>{children}</main>
     </div>
   );

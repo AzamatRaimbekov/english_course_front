@@ -4,23 +4,29 @@ import CarouselNavigation from "/components/Carusels/CarouselNavigations";
 import { useState } from "react";
 import HtmlParser from "../../../components/HtmlParser";
 
-import s from "./level-detail.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { openModal } from "../../../slices/modalWindow";
 import PassExam from "../../../components/UI/PassExam";
 
+import s from "./level-detail.module.scss";
+
 const LevelDetail = ({ levelData }) => {
-  
+  // readme 6
   const [extraLevelData, setExtraLevel] = useState(levelData?.parts[0]);
+  // readme 1
   const dis = useDispatch();
+
   const { data } = useSelector((state) => state.auth);
+
   const getExtraLevelData = (item) => {
     setExtraLevel(item);
   };
 
+  // Функция, которая при нажатии открывает модальное окно через REDUX
   const startToPassExam = () => {
     if (!levelData.examTest.length) return null;
     dis(
+      // В эту фкнцию диспач мы пропсами(параметрами) отправляем компонент PassExam
       openModal({
         body: (
           <PassExam
@@ -49,7 +55,7 @@ const LevelDetail = ({ levelData }) => {
         />
         <HtmlParser desc={extraLevelData?.textExtra} />
         <div className={s.button}>
-          {levelData.examTest.length && (
+          {levelData?.examTest?.length && (
             <Button
               onClick={startToPassExam}
               variant="contained"
