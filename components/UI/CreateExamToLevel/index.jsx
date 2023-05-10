@@ -36,13 +36,16 @@ const CreateExamToLevel = ({ levelList }) => {
   });
 
   const onSubmit = (data) => {
-    try {
-      const currentData = {
-        examTest: QArray,
-      };
-      dis(createExamToLevel({ id: data.levelId, data: currentData }));
-      
-    } catch (e) {}
+    if (!QArray.length) {
+      dis(openModalText({ text: "Суролор кошулган жок!" }))
+      return null;
+    }
+
+    const currentData = {
+      examTest: QArray,
+    };
+    dis(createExamToLevel({ id: data.levelId, data: currentData }));
+
     reset();
     setQArray([]);
   };
@@ -52,6 +55,7 @@ const CreateExamToLevel = ({ levelList }) => {
   };
   const addQuestionToArray = () => {
     const currentDataState = getValues();
+    if (!currentDataState.name_of_question.length) return;
     const radios = questionsArray.answers_array.map((item) => ({
       answer: currentDataState[item.answerName],
       trueAnswer: currentDataState[item.trueAnswerName] === 1 ? true : false,
@@ -126,6 +130,7 @@ const CreateExamToLevel = ({ levelList }) => {
           options={levelOption}
           width="100%"
           label="Сыноо деңгээлин тандаңыз"
+          className={s.select}
         />
 
         <div className={s.questionWrapper}>
@@ -133,7 +138,7 @@ const CreateExamToLevel = ({ levelList }) => {
           <InputMU
             variant="outlined"
             sx={{ m: 0, width: "100%" }}
-            {...register("name_of_question", { required: `Суроо ` })}
+            {...register("name_of_question", { required: false })}
             label={`Суроо`}
             className={s.input}
             error={errors.name_of_question}
@@ -144,14 +149,14 @@ const CreateExamToLevel = ({ levelList }) => {
                 variant="outlined"
                 key={item.name}
                 sx={{ m: 0, width: "100%" }}
-                {...register(item.answerName, { required: "Жооп" })}
+                {...register(item.answerName, { required: false })}
                 label="Жооп"
                 className={s.input}
                 error={item.error}
               />
               <Controller
                 {...register(item.trueAnswerName, {
-                  required: "Туура же туура эмес жооп",
+                  required: false,
                 })}
                 control={control}
                 name={item.trueAnswerName}
@@ -184,15 +189,13 @@ const CreateExamToLevel = ({ levelList }) => {
         {/* Созданные вопросы */}
         <div className={s.questionWrapper}>
           <h3>Түзүлгөн суроолор</h3>
-          {QArray?.radios?.map((item, index) => {
-            const questionArrayBlock = item.map((qest, index2) => (
+          {QArray?.map((item, index) => {
+            const questionArrayBlock = item?.radios.map((qest, index2) => (
               <div className={s.questionItem}>
-                <p className={s.question_title}>
-                  #{index2 + 1} - суроо : {qest.question}
-                </p>
+                <p className={s.question_title}></p>
                 <p className={s.question_title}>Жооп - {qest.answer}</p>
                 <div className={s.question_answer}>
-                  {qest.trueAnswer === 1 ? (
+                  {qest.trueAnswer ? (
                     <p className={s.question_answer}>"Туура"</p>
                   ) : (
                     <p className={s.question_answer_no}>"Туура эмес"</p>
@@ -203,7 +206,9 @@ const CreateExamToLevel = ({ levelList }) => {
 
             return (
               <div>
-                <h4 className={s.title_text}>№{index + 1} - суроо</h4>
+                <h4 className={s.title_text}>
+                  #{index + 1} - суроо : {item.question}
+                </h4>
                 {questionArrayBlock}
               </div>
             );

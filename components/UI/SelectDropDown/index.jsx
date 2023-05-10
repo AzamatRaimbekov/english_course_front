@@ -27,7 +27,7 @@ const SelectDropDownDefault = ({ data, title, onClick }) => {
       <ol className={clsx(s.ol, isShow && s.active)}>
         {data?.map((link) => (
           <p
-            onClick={() => !item.status && onClick(link?.id)}
+            onClick={() => !link?.status && onClick(link?.id)}
             className={s.bottomLink}
           >
             <li

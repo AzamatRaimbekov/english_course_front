@@ -5,7 +5,7 @@ import InputMU from "../InputMU";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import SelectMU from "../SelectMU";
-import { createLevel } from "../../../slices/levels";
+import { createLevel, deleteLevelByID } from "../../../slices/levels";
 import { openModalText } from "../../../slices/modalWindow";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 
@@ -64,8 +64,8 @@ const CreateLevels = ({ levelList }) => {
     setExtraText("");
   };
 
-  const deleteLevel = () => {
-    
+  const deleteLevel = (id) => {
+    dis(deleteLevelByID(id))
   }
   
   useEffect(() => {
@@ -200,10 +200,10 @@ const CreateLevels = ({ levelList }) => {
                 <p className={s.titleCard}>{item.title}</p>
                 <p>деңгээл - {item.currentLevel}</p>
               </div>
-              <div className={s.control}>
-                <p className={s.delete}>Жок кылуу</p>
+              {/* <div className={s.control}>
+                <p onClick={() => deleteLevel(item._id)} className={s.delete}>Жок кылуу</p>
                 <p className={s.edit}>өзгөртүү</p>
-              </div>
+              </div> */}
             </div>
           ))}
         </div>

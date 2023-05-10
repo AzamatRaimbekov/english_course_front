@@ -5,10 +5,10 @@ import { store } from "../store";
 
 
 const clientApi = axios.create({
-    baseURL: 'https://english-course-back.onrender.com/',
+    baseURL: 'http://localhost:4444/',
 })
 const serverApi = axios.create({
-    baseURL: 'https://english-course-back.onrender.com/',
+    baseURL: 'http://localhost:4444/',
 })
 
 function setResponseInterceptors() {

@@ -45,7 +45,7 @@ const LevelDetail = ({ levelData }) => {
 
   return (
     <div>
-      <Container>
+      <Container className={s.containerWrapper}>
         <h1 className="main-title">Учурдагы деңгээл - {levelData.title} </h1>
         <HtmlParser desc={levelData.text} />
         <CarouselNavigation
@@ -55,7 +55,7 @@ const LevelDetail = ({ levelData }) => {
         />
         <HtmlParser desc={extraLevelData?.textExtra} />
         <div className={s.button}>
-          {levelData?.examTest?.length && (
+          {levelData?.examTest.length !== 0 && (
             <Button
               onClick={startToPassExam}
               variant="contained"

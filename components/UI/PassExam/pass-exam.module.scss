@@ -4,9 +4,14 @@
   // justify-content: center;
   flex-direction: column;
   width: 700px;
-  max-height: 700px;
+
+  // max-height: 700px;
+
   position: relative !important;
   overflow-y: scroll;
+  @media (max-width: 960px) {
+    width: 100%;
+  }
 
   h2 {
     text-align: center;

@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import clsx from "clsx";
 import { cloneDeep } from "lodash";
 import s from "./check-box.module.scss";
+
 const CheckBoxMU = ({
   className,
   Label = "Label",
@@ -11,6 +12,7 @@ const CheckBoxMU = ({
   onChange,
   title = "Вопрос",
   error,
+  maxValues = 2,
 }) => {
   const [array, setArray] = useState([]);
   const onChangeChekcBox = (e) => {
@@ -18,10 +20,12 @@ const CheckBoxMU = ({
     const arrayCurrency = cloneDeep(array) || [];
     const indexArray = arrayCurrency.indexOf(id);
     if (indexArray === -1) {
+      if (arrayCurrency.length === maxValues) return;
       arrayCurrency.push(id);
       setArray(arrayCurrency);
       onChange(arrayCurrency);
     } else {
+
       arrayCurrency.splice(indexArray, indexArray + 1);
       setArray(arrayCurrency);
       onChange(arrayCurrency);
@@ -35,6 +39,7 @@ const CheckBoxMU = ({
         {list?.map((item) => (
           <FormGroup key={item.id}>
             <FormControlLabel
+              checked={array?.includes(item.id)}
               onChange={onChangeChekcBox}
               value={item.id}
               control={<Checkbox />}

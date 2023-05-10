@@ -8,6 +8,9 @@ export const LevelsApi = {
     createExamToLevel(id, data) {
         return serverApi.patch(`levels_exam/${id}`, data)
     },
+    deleteLevel(id) {
+        return serverApi.delete(`levels/${id}`)
+    },
 }
 
 

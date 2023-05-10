@@ -42,7 +42,6 @@ const Header = ({ levelList }) => {
             className={s.select}
             title="Уровни"
           />
-          {/* <DropDownMenu className={s.select} title="Тесты" /> */}
           {userData?.data && (
             <div className={s.wrapper}>
               <div className={s.titleWrapperText}>

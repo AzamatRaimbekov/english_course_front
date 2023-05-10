@@ -27,6 +27,11 @@
   min-height: 300px;
   border-radius: 14px;
   box-shadow: var(--SHADOW);
+  max-height: 90%;
+  max-width: 95%;
+  @media (max-width: 960px) {
+    width: 100%;
+  }
 }
 
 .contentBlock {
@@ -38,11 +43,17 @@
   z-index: 2001;
   min-width: 300px;
   min-height: 300px;
+
   border-radius: 14px;
   box-shadow: var(--SHADOW);
   display: flex;
   justify-content: center;
   align-items: center;
+  max-height: 90%;
+  max-width: 95%;
+  @media (max-width: 960px) {
+    width: 100%;
+  }
 }
 
 .title {

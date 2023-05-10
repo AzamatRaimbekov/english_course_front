@@ -24,10 +24,10 @@ const UserList = ({ userList }) => {
               )}
             </div>
           </div>
-          <div className={s.control}>
+          {/* <div className={s.control}>
             <p className={s.delete}>Жок кылуу</p>
             <p className={s.edit}>өзгөртүү</p>
-          </div>
+          </div> */}
         </div>
       ))}
     </div>

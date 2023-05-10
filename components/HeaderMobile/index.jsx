@@ -29,6 +29,7 @@ const HeaderMobile = ({ levelList }) => {
 
   const goToLevelPage = (pathId) => {
     push(`/levels/${pathId}`);
+    setShow(false);
   };
 
   return (
@@ -59,7 +60,7 @@ const HeaderMobile = ({ levelList }) => {
                     {userData?.data?.fullName} / {userData?.data?.email}
                   </p>
                   <p className={s.titleWrapper}>
-                  Деңгээл - {userData?.data?.level}
+                    Деңгээл - {userData?.data?.level}
                   </p>
                 </div>
                 <Button onClick={logoutFromak}>Чыгуу</Button>

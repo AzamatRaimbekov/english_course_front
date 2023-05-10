@@ -19,6 +19,19 @@ export const createExamToLevel = createAsyncThunk('auth/createExamToLevel', asyn
         return e
     }
 })
+export const deleteLevelByID = createAsyncThunk('level/delete', async (params) => {
+
+    try {
+        const { data } = await LevelsApi.deleteLevel(params)
+        store.dispatch(openModalText({ text: "Cиз деңгээл жокко чыгардыныз" }));
+        return data
+
+    } catch (e) {
+        store.dispatch(openModalText({ text: e?.response?.data?.message }))
+        return e
+    }
+})
+
 
 const initialState = {
     levels: {

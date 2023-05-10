@@ -9,9 +9,10 @@ import { useDispatch } from "react-redux";
 import { openModalText } from "../../../slices/modalWindow";
 import { UserApi } from "../../../service/api/UserApi";
 import { useRouter } from "next/router";
+import CheckBoxMU from "../CheckBoxMU";
 
 const PassExam = ({ data, levelData }) => {
-  const [slider, setSlider] = useState(30);
+
   const [coint, setCoint] = useState(0);
   const [givven, setGivvem] = useState(false);
   const dis = useDispatch();
@@ -42,7 +43,6 @@ const PassExam = ({ data, levelData }) => {
     dis(
       openModalText({
         text: `Куттуктайбыз! Сиздин упайыңыз ${coint}`,
-  
       })
     );
   };
@@ -51,7 +51,7 @@ const PassExam = ({ data, levelData }) => {
     if (levelData.currentLevelUser > levelData.level) return null;
     changeLevelApi(levelData.currentLevelUser + 1);
   };
- 
+
   const changeLevelApi = async (level) => {
     try {
       const levelChange = {
@@ -64,9 +64,10 @@ const PassExam = ({ data, levelData }) => {
   const onChangeAnswer = (name, e, array) => {
     setValue(name, e);
     const currentData = getValues();
-    const checkAnswer = array.find((item) => item._id === e)?.trueAnswer;
+    const found = array?.find((r, index) => e.includes(index));
+    
 
-    if (checkAnswer) {
+    if (found?.trueAnswer) {
       setCoint((prev) => prev + 5);
     } else {
       if (coint === 0) {
@@ -76,32 +77,11 @@ const PassExam = ({ data, levelData }) => {
       }
     }
   };
-  // dis(
-  //   openModalText({
-  //     text: `Куттуктайбыз! Сиздин упайыңыз ${totalCount}`,
-  //     onClick: () => router.push("/"),
-  //   })
-  // );
 
   return (
     <div className={s.wrapper}>
-      {/* slider */}
 
       <h2>Тест деңгээли - {levelData?.title}</h2>
-      {/* <div className={s.boxWrapeer}>
-        <Box sx={{ width: 300 }}>
-          <Slider
-            aria-label="Temperature"
-            defaultValue={slider}
-            //   getAriaValueText={slider}
-            valueLabelDisplay="auto"
-            step={10}
-            marks
-            min={1}
-            max={110}
-          />
-        </Box>
-      </div> */}
       <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
         {data?.map((item, index) => (
           <Controller
@@ -115,16 +95,15 @@ const PassExam = ({ data, levelData }) => {
               fieldState: { invalid, isTouched, isDirty, error },
               formState,
             }) => (
-              <InputRadioMU
+              <CheckBoxMU
                 value={value}
-                label={item.question}
-                error={errors.answer_wrapper}
                 onChange={(e) =>
                   onChangeAnswer(`question_${index}`, e, item?.radios)
                 }
-                list={item?.radios?.map((q) => ({
+                error={errors.answer_wrapper}
+                list={item?.radios?.map((q, index) => ({
                   label: q.answer,
-                  id: q._id,
+                  id: index,
                 }))}
               />
             )}

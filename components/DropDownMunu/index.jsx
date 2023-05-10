@@ -1,6 +1,8 @@
 import { useState } from "react";
 import clsx from "clsx";
 import BlockIcon from "@mui/icons-material/Block";
+import LockIcon from "@mui/icons-material/Lock";
+
 import s from "./dropdown.module.scss";
 
 const DropDownMenu = ({ title, className = "", list, onClick }) => {
@@ -19,7 +21,7 @@ const DropDownMenu = ({ title, className = "", list, onClick }) => {
             onClick={() => !item.status && onClick(item.id)}
             className={s.wrapper}
           >
-            {item.status && <BlockIcon />}
+            {item.status && <LockIcon />}
             <p className={clsx(item.status && s.blocked)}>{item.title}</p>
           </div>
         ))}

@@ -15,7 +15,7 @@ const SelectMU = forwardRef(
   }, ref) => {
     return (
       <div className={className}>
-        <FormControl  sx={{ m: 1, minWidth: width }}>
+        <FormControl  sx={{ m: 0, minWidth: width }}>
           <InputLabel id="demo-simple-select-label">{label}</InputLabel>
           <Select
             labelId="demo-simple-select-label"
