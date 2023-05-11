@@ -8,7 +8,7 @@ const clientApi = axios.create({
     baseURL: 'http://localhost:4444/',
 })
 const serverApi = axios.create({
-    baseURL: 'http://localhost:4444/',
+    baseURL: 'https://english-course-back.onrender.com/',
 })
 
 function setResponseInterceptors() {
