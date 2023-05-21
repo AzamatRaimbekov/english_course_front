@@ -1,9 +1,9 @@
 import { Button, Container } from "@mui/material";
 import { MainPageApi } from "../../../service/api/MainPage";
 import CarouselNavigation from "/components/Carusels/CarouselNavigations";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import HtmlParser from "../../../components/HtmlParser";
-
+import ReactPlayer from "react-player";
 import { useDispatch, useSelector } from "react-redux";
 import { openModal } from "../../../slices/modalWindow";
 import PassExam from "../../../components/UI/PassExam";
@@ -11,8 +11,10 @@ import PassExam from "../../../components/UI/PassExam";
 import s from "./level-detail.module.scss";
 
 const LevelDetail = ({ levelData }) => {
+  console.log(levelData, "levelData");
   // readme 6
   const [extraLevelData, setExtraLevel] = useState(levelData?.parts[0]);
+  const [showPlayer, setShowPlayer] = useState(false);
   // readme 1
   const dis = useDispatch();
 
@@ -43,17 +45,42 @@ const LevelDetail = ({ levelData }) => {
     );
   };
 
+  useEffect(() => setShowPlayer(true));
+
   return (
     <div>
       <Container className={s.containerWrapper}>
         <h1 className="main-title">Учурдагы деңгээл - {levelData.title} </h1>
         <HtmlParser desc={levelData.text} />
+        <div>
+          {/* < /> */}
+          {(showPlayer && levelData?.videoLink) &&  (
+            <div className={s.playerWrapper}>
+              <ReactPlayer
+                width="100%"
+                height="100%"
+                controls
+                url={levelData?.videoLink}
+              />
+            </div>
+          )}
+        </div>
         <CarouselNavigation
           activeTab={extraLevelData?._id}
           onClick={getExtraLevelData}
           navigation={levelData.parts}
         />
         <HtmlParser desc={extraLevelData?.textExtra} />
+        {(showPlayer && extraLevelData?.videoLinkExtra) && (
+          <div className={s.playerWrapper}>
+            <ReactPlayer
+              width="100%"
+              height="100%"
+              controls
+              url={extraLevelData?.videoLinkExtra}
+            />
+          </div>
+        )}
         <div className={s.button}>
           {levelData?.examTest.length !== 0 && (
             <Button

@@ -15,7 +15,6 @@ import { useEffect, useState } from "react";
 import CKeditor from "../../Ckeditor";
 
 const CreateLevels = ({ levelList }) => {
- 
   const [show, setShow] = useState(false);
   const [extraLevel, setExtraLevel] = useState([]);
   const [editorLoaded, setEditorLoaded] = useState(false);
@@ -38,7 +37,6 @@ const CreateLevels = ({ levelList }) => {
   });
 
   const onSubmit = (data) => {
-   
     const currentData = {
       ...data,
       text: text,
@@ -56,25 +54,23 @@ const CreateLevels = ({ levelList }) => {
     const currentData = {
       title: data.extraLevel,
       textExtra: extraText,
+      videoLinkExtra: data?.videoLinkExtra,
     };
     setExtraLevel([...extraLevel, currentData]);
     setValue("parts", [...extraLevel, currentData]);
     setValue("extraLevel", "");
     setValue("textExtra", "");
+    setValue("videoLinkExtra", "");
     setExtraText("");
   };
 
   const deleteLevel = (id) => {
-    dis(deleteLevelByID(id))
-  }
-  
+    dis(deleteLevelByID(id));
+  };
+
   useEffect(() => {
     setEditorLoaded(true);
   }, []);
-
-
-  
-  
 
   return (
     <section>
@@ -88,13 +84,13 @@ const CreateLevels = ({ levelList }) => {
           error={errors.title}
         />
         <div className={s.textField}>
-          {/* <TextField
+          <InputMU
             sx={{ m: 0, width: "100%" }}
-            {...register("text", { required: "Деңгээлдин сүрөттөлүшү" })}
-            label="Деңгээлдин сүрөттөлүшү"
-            multiline
-            rows={7}
-          /> */}
+            {...register("videoLink", { required: false })}
+            label="Видео шилтемесин кошуу"
+            className={s.input}
+            error={errors.title}
+          />
           <p className={s.cup}>Деңгээлдин сүрөттөлүшү</p>
           <CKeditor
             value={text}
@@ -162,6 +158,13 @@ const CreateLevels = ({ levelList }) => {
                     <p className={s.error}>{errors.textExtra.message}</p>
                   )}
                 </div>
+                <InputMU
+                  sx={{ m: 0, width: "100%" }}
+                  {...register("videoLinkExtra", { required: false })}
+                  label="Видео шилтемесин кошуу"
+                  className={s.input}
+                  error={errors.title}
+                />
                 <Button
                   onClick={addItemToList}
                   className={s.button}

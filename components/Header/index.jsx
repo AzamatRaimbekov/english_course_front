@@ -40,20 +40,23 @@ const Header = ({ levelList }) => {
             onClick={goToLevelPage}
             list={levelList}
             className={s.select}
-            title="Уровни"
+            title="Деңгээлдер"
           />
           {userData?.data && (
             <div className={s.wrapper}>
               <div className={s.titleWrapperText}>
                 <p className={s.titleWrapper}>{userData?.data?.email}</p>
                 <p className={s.titleWrapper}>
-                  Уровень - {userData?.data?.level}
+                  Деңгээл - {userData?.data?.level}
                 </p>
               </div>
               <Button onClick={logoutFromak}>Чыгуу</Button>
             </div>
           )}
           {!userData?.data && <Button onClick={goToAuthPage}>Кируу</Button>}
+          <p onClick={() => push("/crm")} className={s.title}>
+            Мен админ
+          </p>
         </div>
       </Container>
     </header>

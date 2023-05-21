@@ -42,5 +42,15 @@
   font-size: 14px !important;
   display: flex;
   flex-direction: column;
-  margin-right: 10px;
+  margin-right: 40px;
+}
+
+.title {
+  cursor: pointer;
+  color: var(--YELLOW);
+  transition: all 0.6s ease-in-out;
+  &:hover {
+    color: var(--GREEN);
+    font-weight: 700;
+  }
 }
