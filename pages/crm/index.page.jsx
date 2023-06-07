@@ -8,9 +8,9 @@ import { UserApi } from "../../service/api/UserApi";
 import UserList from "../../components/UI/UsersList";
 
 import s from "./crm.module.scss";
+import BreadCrumbsCustom from "../../components/BreadCrumbsCustom";
 
 const CRM = ({ levelList, userList }) => {
-
   // Массив содержащий блоки для табуляции
   const CRM_TABS = [
     { id: "Деңгээлдер", body: <CreateLevels levelList={levelList} /> },
@@ -21,6 +21,9 @@ const CRM = ({ levelList, userList }) => {
 
   return (
     <Container>
+      <BreadCrumbsCustom
+        currentPage={{ title: "Администанция", link: "/crm" }}
+      />
       <div className={s.tabWrapper}>
         <div className={s.tabContainer}>
           {CRM_TABS?.map((item) => (

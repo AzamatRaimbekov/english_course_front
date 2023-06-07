@@ -13,6 +13,7 @@ import { cloneDeep } from "lodash";
 import SendIcon from "@mui/icons-material/Send";
 import { openModalText } from "../../slices/modalWindow";
 import { UserApi } from "../../service/api/UserApi";
+import BreadCrumbsCustom from "../../components/BreadCrumbsCustom";
 const questions = {};
 
 const FirtExamModule = () => {
@@ -85,6 +86,9 @@ const FirtExamModule = () => {
 
   return (
     <section className={s.wrapper}>
+      <BreadCrumbsCustom
+        currentPage={{ title: "Квалификациялык тест", link: "/first-exam" }}
+      />
       <Container>
         <h2 className={s.title}>Квалификациялык тест</h2>
 

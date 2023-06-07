@@ -5,7 +5,7 @@ import LockIcon from "@mui/icons-material/Lock";
 
 import s from "./dropdown.module.scss";
 
-const DropDownMenu = ({ title, className = "", list, onClick }) => {
+const DropDownMenu = ({ title, className = "", list, onClick, user }) => {
   const [show, setShow] = useState(false);
   return (
     <div
@@ -18,10 +18,11 @@ const DropDownMenu = ({ title, className = "", list, onClick }) => {
       <div className={clsx(s.menu, show && s.active)}>
         {list?.map((item) => (
           <div
-            onClick={() => !item.status && onClick(item.id)}
+            onClick={() =>  !item.status && onClick(item.id)}
             className={s.wrapper}
           >
             {item.status && <LockIcon />}
+            {!user && <LockIcon />}
             <p className={clsx(item.status && s.blocked)}>{item.title}</p>
           </div>
         ))}

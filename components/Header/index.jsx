@@ -9,6 +9,8 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 
 const Header = ({ levelList }) => {
+  const { data: user } = useSelector((s) => s.auth);
+  const isAith = user !== null;
   const { push } = useRouter();
   const userData = useSelector((state) => state.auth);
   const dis = useDispatch();
@@ -24,6 +26,7 @@ const Header = ({ levelList }) => {
   };
 
   const goToLevelPage = (pathId) => {
+    if (!isAith) return null;
     push(`/levels/${pathId}`);
   };
 
@@ -37,6 +40,7 @@ const Header = ({ levelList }) => {
             </Link>
           </div>
           <DropDownMenu
+            user={isAith}
             onClick={goToLevelPage}
             list={levelList}
             className={s.select}

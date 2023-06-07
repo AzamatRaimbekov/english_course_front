@@ -1,4 +1,4 @@
-import { Button, Container } from "@mui/material";
+import { Breadcrumbs, Button, Container } from "@mui/material";
 import { MainPageApi } from "../../../service/api/MainPage";
 import CarouselNavigation from "/components/Carusels/CarouselNavigations";
 import { useEffect, useState } from "react";
@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { openModal } from "../../../slices/modalWindow";
 import PassExam from "../../../components/UI/PassExam";
 
+import BreadCrumbsCustom from "../../../components/BreadCrumbsCustom";
 import s from "./level-detail.module.scss";
 
 const LevelDetail = ({ levelData }) => {
@@ -49,12 +50,15 @@ const LevelDetail = ({ levelData }) => {
 
   return (
     <div>
+      <BreadCrumbsCustom
+        currentPage={{ title: levelData.title, link: `/levels/${levelData._id}` }}
+      />
       <Container className={s.containerWrapper}>
         <h1 className="main-title">Учурдагы деңгээл - {levelData.title} </h1>
         <HtmlParser desc={levelData.text} />
         <div>
           {/* < /> */}
-          {(showPlayer && levelData?.videoLink) &&  (
+          {showPlayer && levelData?.videoLink && (
             <div className={s.playerWrapper}>
               <ReactPlayer
                 width="100%"
@@ -71,7 +75,7 @@ const LevelDetail = ({ levelData }) => {
           navigation={levelData.parts}
         />
         <HtmlParser desc={extraLevelData?.textExtra} />
-        {(showPlayer && extraLevelData?.videoLinkExtra) && (
+        {showPlayer && extraLevelData?.videoLinkExtra && (
           <div className={s.playerWrapper}>
             <ReactPlayer
               width="100%"
