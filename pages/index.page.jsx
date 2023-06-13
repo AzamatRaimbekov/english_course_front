@@ -4,7 +4,9 @@ import CardWrapper from "../components/CardsWrapper";
 import { useSelector } from "react-redux";
 import HomeBanner from "../components/HomeBanner";
 import HomeBannerIcon from "../assets/images/homeBanner.png";
-
+import SecondImage from "../assets/images/second.png";
+import CarouselCardMain from "../components/CarouselCardMain";
+import { MainPageCarousel } from "../constans/main-page";
 const MainPage = ({ levelList }) => {
   // levelList - Это те данные, которые мы получили с getServerSideProps
   const { data } = useSelector((state) => state.auth);
@@ -14,9 +16,10 @@ const MainPage = ({ levelList }) => {
       <HomeBanner
         // Тут мы через пропсы передаем параметры, которые будут содержаться внутри компонента(title - заголовок, subtitle = описание  )
         title="Биз менен англис тилин үйрөнүңүз"
-        subtitle="industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+        subtitle="Батыш дүйнөсүндөгү адамдардын көбү англис тилин жашоосунун кайсы бир мезгилинде үйрөнүшөт, бирок орто мектептик жылдарыңыз артта калса же англис тилин үйрөнүүгө эч качан аргасыз болгон болсоңуз, анда сиз англис тили эмне үчүн мынчалык маанилүү тил деп ойлонуп жаткандырсыз. Эгерде сизди Эмне үчүн англис тилин үйрөнүү керек? деп ойлонуп жатсаңыз, төмөндө англис тилин үйрөнүү эмне үчүн маанилүү экенине байланыштуу кээ бир себептерди таба аласыз."
         imageShow={HomeBannerIcon.src}
       />
+      <CarouselCardMain title="Биз жондо" data={MainPageCarousel} />
       <Container>
         <section className="mt-40">
           <h2>Деңгээлдерден өтүп баштаңыз</h2>

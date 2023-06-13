@@ -28,7 +28,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "pages/_app.page.jsx", "components/UI/CreateLevels/index.jsx", "components/Ckeditor/index.jsx", "components/HtmlParser/index.jsx", "components/UI/UsersList/index.jsx"  ],
+, "pages/_app.page.jsx", "components/UI/CreateLevels/index.jsx", "components/Ckeditor/index.jsx", "components/HtmlParser/index.jsx", "components/UI/UsersList/index.jsx", "components/CarouselCardMain/index.jsx", "components/HeadingWithNav/index.jsx", "components/HeadingWithNav/index.jsx", "components/CardMain/index.jsx", "components/CardMain/index.jsx"  ],
   "exclude": [
     "node_modules"
   ]

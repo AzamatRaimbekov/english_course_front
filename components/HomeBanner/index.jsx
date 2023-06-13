@@ -3,10 +3,10 @@ import s from "./home-banner.module.scss";
 import clsx from "clsx";
 import { Container, useMediaQuery } from "@mui/material";
 
-const HomeBanner = ({ title, subtitle, imageShow }) => {
+const HomeBanner = ({ title, subtitle, imageShow, isMedium }) => {
   const matches = useMediaQuery("(min-width:640px)");
   return (
-    <section className={clsx("mt-40", s.wrapper)}>
+    <section className={clsx(!isMedium && "mt-40", s.wrapper)}>
       <Container>
         <div className={s.grid}>
           <div>

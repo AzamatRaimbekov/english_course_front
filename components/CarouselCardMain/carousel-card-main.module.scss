@@ -1,0 +1,13 @@
+.section {
+  margin-top: 20px;
+  :global {
+    .swiper {
+      margin: -15px;
+      padding: 15px;
+    }
+    .swiper-slide {
+      height: auto;
+      flex-grow: 3;
+    }
+  }
+}
