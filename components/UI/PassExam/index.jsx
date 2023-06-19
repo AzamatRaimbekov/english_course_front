@@ -93,7 +93,7 @@ const PassExam = ({ data, levelData }) => {
               formState,
             }) => (
               <CheckBoxMU
-                title={item.question}
+                title={item?.question}
                 value={value}
                 onChange={(e) =>
                   onChangeAnswer(`question_${index}`, e, item?.radios)
