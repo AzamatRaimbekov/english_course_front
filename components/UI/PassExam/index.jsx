@@ -12,7 +12,6 @@ import { useRouter } from "next/router";
 import CheckBoxMU from "../CheckBoxMU";
 
 const PassExam = ({ data, levelData }) => {
-
   const [coint, setCoint] = useState(0);
   const [givven, setGivvem] = useState(false);
   const dis = useDispatch();
@@ -65,7 +64,6 @@ const PassExam = ({ data, levelData }) => {
     setValue(name, e);
     const currentData = getValues();
     const found = array?.find((r, index) => e.includes(index));
-    
 
     if (found?.trueAnswer) {
       setCoint((prev) => prev + 5);
@@ -80,7 +78,6 @@ const PassExam = ({ data, levelData }) => {
 
   return (
     <div className={s.wrapper}>
-
       <h2>Тест деңгээли - {levelData?.title}</h2>
       <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
         {data?.map((item, index) => (
@@ -96,6 +93,7 @@ const PassExam = ({ data, levelData }) => {
               formState,
             }) => (
               <CheckBoxMU
+                title={item.question}
                 value={value}
                 onChange={(e) =>
                   onChangeAnswer(`question_${index}`, e, item?.radios)

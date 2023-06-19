@@ -19,10 +19,6 @@ const Auth = () => {
     formState: { errors },
   } = useForm({
     mode: "onChange",
-    defaultValues: {
-      email: "azamat@bk.ru",
-      password: "Azamat12345",
-    },
   });
 
   const onSubmit = (data) => {
