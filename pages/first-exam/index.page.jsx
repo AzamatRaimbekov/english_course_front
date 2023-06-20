@@ -8,6 +8,14 @@ import {
   correctAnswers,
   firtsQusetion,
   secondQusetion,
+  thirdQusetion,
+  fivithQusetion,
+  fourtdhQusetion,
+  sixedQusetion,
+  sevenedQusetion,
+  enthQusetion,
+  nineQusetion,
+  tenQusetion,
 } from "../../constans/questions_first_exam";
 import { cloneDeep } from "lodash";
 import SendIcon from "@mui/icons-material/Send";
@@ -34,12 +42,44 @@ const FirtExamModule = () => {
 
   const watchFirst = useWatch({ control, name: "first" });
   const watchSecond = useWatch({ control, name: "second" });
+  const watchThird = useWatch({ control, name: "three" });
+  const watchFourth = useWatch({ control, name: "four" });
+  const watchFive = useWatch({ control, name: "five" });
+  const watchSix = useWatch({ control, name: "six" });
+  const watchSeven = useWatch({ control, name: "seven" });
+  const watchEngth = useWatch({ control, name: "ength" });
+  const watchNine = useWatch({ control, name: "nine" });
+  const watchTen = useWatch({ control, name: "ten" });
 
   const onChangeFirstExam = (array) => {
     setValue("first", array);
   };
   const onChangeSecond = (array) => {
     setValue("second", array);
+  };
+  const onChangeThird = (array) => {
+    setValue("three", array);
+  };
+  const onChangeFourth = (array) => {
+    setValue("four", array);
+  };
+  const onChangeFive = (array) => {
+    setValue("five", array);
+  };
+  const onChangeSix = (array) => {
+    setValue("six", array);
+  };
+  const onChangeSeven = (array) => {
+    setValue("seven", array);
+  };
+  const onChangeEngth = (array) => {
+    setValue("ength", array);
+  };
+  const onChangeNine = (array) => {
+    setValue("nine", array);
+  };
+  const onChangeTen = (array) => {
+    setValue("ten", array);
   };
 
   // Это функция собирает правильные и не правильные ответы
@@ -51,6 +91,30 @@ const FirtExamModule = () => {
       totalCount = totalCount + 10;
     }
     if (watchSecond.includes(correctAnswers.second)) {
+      totalCount = totalCount + 10;
+    }
+    if (watchThird.includes(correctAnswers.third)) {
+      totalCount = totalCount + 10;
+    }
+    if (watchFourth.includes(correctAnswers.fourth)) {
+      totalCount = totalCount + 10;
+    }
+    if (watchFive.includes(correctAnswers.five)) {
+      totalCount = totalCount + 10;
+    }
+    if (watchSix.includes(correctAnswers.six)) {
+      totalCount = totalCount + 10;
+    }
+    if (watchSeven.includes(correctAnswers.seven)) {
+      totalCount = totalCount + 10;
+    }
+    if (watchEngth.includes(correctAnswers.egth)) {
+      totalCount = totalCount + 10;
+    }
+    if (watchNine.includes(correctAnswers.nine)) {
+      totalCount = totalCount + 10;
+    }
+    if (watchTen.includes(correctAnswers.ten)) {
       totalCount = totalCount + 10;
     }
     regLevel(totalCount);
@@ -69,6 +133,8 @@ const FirtExamModule = () => {
         return changeLevelApi(2);
       case points >= 20 && points < 30:
         return changeLevelApi(3);
+      case points >= 30 && points < 40:
+        return changeLevelApi(4);
       default:
         return changeLevelApi(1);
     }
@@ -101,6 +167,7 @@ const FirtExamModule = () => {
             name="first"
             render={() => (
               <CheckBoxMU
+                title="My mother is a good cook."
                 error={errors.first}
                 onChange={onChangeFirstExam}
                 list={firtsQusetion}
@@ -115,9 +182,130 @@ const FirtExamModule = () => {
             name="second"
             render={() => (
               <CheckBoxMU
+                title="How long have you been playing the trumpet?"
                 error={errors.second}
                 onChange={onChangeSecond}
                 list={secondQusetion}
+              />
+            )}
+          />
+          <Controller
+            {...register("three", {
+              required: "Жоопту тандаңыз",
+            })}
+            control={control}
+            name="three"
+            render={() => (
+              <CheckBoxMU
+                title="I will ___ up at five tomorrow."
+                error={errors.three}
+                onChange={onChangeThird}
+                list={thirdQusetion}
+              />
+            )}
+          />
+          <Controller
+            {...register("four", {
+              required: "Жоопту тандаңыз",
+            })}
+            control={control}
+            name="four"
+            render={() => (
+              <CheckBoxMU
+                title="I was sleeping."
+                error={errors.four}
+                onChange={onChangeFourth}
+                list={fourtdhQusetion}
+              />
+            )}
+          />
+          <Controller
+            {...register("five", {
+              required: "Жоопту тандаңыз",
+            })}
+            control={control}
+            name="five"
+            render={() => (
+              <CheckBoxMU
+                title="What were you doing last night at 7:00?"
+                error={errors.five}
+                onChange={onChangeFive}
+                list={fivithQusetion}
+              />
+            )}
+          />
+          <Controller
+            {...register("six", {
+              required: "Жоопту тандаңыз",
+            })}
+            control={control}
+            name="six"
+            render={() => (
+              <CheckBoxMU
+                title="___ is that girl? She's my sister"
+                error={errors.six}
+                onChange={onChangeSix}
+                list={sixedQusetion}
+              />
+            )}
+          />
+          <Controller
+            {...register("seven", {
+              required: "Жоопту тандаңыз",
+            })}
+            control={control}
+            name="seven"
+            render={() => (
+              <CheckBoxMU
+                title="What are you doing?"
+                error={errors.seven}
+                onChange={onChangeSeven}
+                list={sevenedQusetion}
+              />
+            )}
+          />
+          <Controller
+            {...register("ength", {
+              required: "Жоопту тандаңыз",
+            })}
+            control={control}
+            name="ength"
+            render={() => (
+              <CheckBoxMU
+                title="How many hours a day do you sleep?"
+                error={errors.ength}
+                onChange={onChangeEngth}
+                list={enthQusetion}
+              />
+            )}
+          />
+          <Controller
+            {...register("nine", {
+              required: "Жоопту тандаңыз",
+            })}
+            control={control}
+            name="nine"
+            render={() => (
+              <CheckBoxMU
+                title="What is your busiest day of the week?"
+                error={errors.nine}
+                onChange={onChangeNine}
+                list={nineQusetion}
+              />
+            )}
+          />
+          <Controller
+            {...register("ten", {
+              required: "Жоопту тандаңыз",
+            })}
+            control={control}
+            name="ten"
+            render={() => (
+              <CheckBoxMU
+                title="I want you to ___ here with me."
+                error={errors.ten}
+                onChange={onChangeTen}
+                list={tenQusetion}
               />
             )}
           />
